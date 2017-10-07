@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BookCase from './BookCase'
 import BookSearch from './BookSearch'
-
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -36,7 +35,6 @@ class BooksApp extends React.Component {
   }
 
   onBookChange = () => {
-    debugger;
     this.getBooks();
   }
 

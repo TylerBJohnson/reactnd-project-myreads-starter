@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BookActionMenu from './BookActionMenu'
 import Get from 'lodash/get'
+import BookActionMenu from './BookActionMenu'
+import StarBar from './StarBar'
 
 class BookCard extends React.Component {
 
@@ -17,6 +18,9 @@ class BookCard extends React.Component {
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: this.getBackgroundUrl()}}></div>
+            {
+              book.averageRating && <StarBar stars={book.averageRating} totalRatings={book.ratingsCount} />
+            }
             <BookActionMenu book={book} onBookChange={this.props.onBookChange}/>
           </div>
           <div className="book-title">{Get(book, 'title', '')}</div>
