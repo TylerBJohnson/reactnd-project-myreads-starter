@@ -11,7 +11,6 @@ class BookSearch extends React.Component {
   componentWillReceiveProps(nextProps) {
     if(this.props !== nextProps) {
       if(nextProps.books) {
-        debugger;
         this.mergeResultsWithBooks(this.state.results, nextProps.books)
       }
     }
@@ -45,7 +44,6 @@ class BookSearch extends React.Component {
     results.forEach((result) => {
       let book = bookMap[result.id]
       if(book){
-        debugger;
         result['shelf'] = book['shelf']
       }
     })
