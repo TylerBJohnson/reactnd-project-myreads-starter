@@ -34,8 +34,20 @@ class BooksApp extends React.Component {
     });
   }
 
-  onBookChange = () => {
-    this.getBooks();
+  onBookChange = (book, targetShelf) => {
+    BooksAPI.update(book, targetShelf)
+      .then(() =>  {
+        let { shelves, books } = this.state
+        if(book.shelf !== undefined){
+          shelves[book.shelf] = shelves[book.shelf].filter((bookFilter) => bookFilter.id !== book.id)
+        }
+        book.shelf = targetShelf
+        if(targetShelf !== 'none') {
+          shelves[book.shelf] = shelves[book.shelf].concat(book)
+          books = books.concat(book)
+        }
+        this.setState({shelves, books})
+      });
   }
 
   render() {

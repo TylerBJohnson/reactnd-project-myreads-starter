@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-import * as BooksAPI from './BooksAPI'
 import Get from 'lodash/get'
 
 class BookActionMenu extends React.Component {
 
   onSelectAction = (e) => {
-    BooksAPI.update(this.props.book, e.target.value)
-      .then(() =>  {
-        if(this.props.onBookChange){
-          this.props.onBookChange()
-        }
-      });
+    if(this.props.onBookChange){
+      this.props.onBookChange(this.props.book, e.target.value)
+    }
   }
 
   render() {

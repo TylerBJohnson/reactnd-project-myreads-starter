@@ -53,10 +53,6 @@ class BookSearch extends React.Component {
     this.setState({query: e.target.value}, () => this.search())
   }
 
-  onBookChange = () => {
-    this.props.onBookChange();
-  }
-
   render() {
     return(
       <div className="search-books">
@@ -72,7 +68,7 @@ class BookSearch extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
-          <BooksGrid books={this.state.results} onBookChange={this.onBookChange}/>
+          <BooksGrid books={this.state.results} onBookChange={this.props.onBookChange}/>
         </div>
       </div>
     )
