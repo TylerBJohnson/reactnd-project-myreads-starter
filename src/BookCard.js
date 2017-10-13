@@ -17,7 +17,7 @@ class BookCard extends React.Component {
       <div>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 174, backgroundImage: this.getBackgroundUrl()}}></div>
+            <div className="book-cover" style={{backgroundImage: this.getBackgroundUrl()}}></div>
             {
               book.averageRating && <StarBar stars={book.averageRating} totalRatings={book.ratingsCount} />
             }
