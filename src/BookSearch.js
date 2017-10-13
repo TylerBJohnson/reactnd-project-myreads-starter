@@ -23,10 +23,15 @@ class BookSearch extends React.Component {
         if(Array.isArray(results)){
           this.mergeResultsWithBooks(results, this.props.books);
           this.setState({results})
-        }else{ // Handle weird error response from service for some searches, e.g. "te"
+        }else{
+          // Since the service sends back an error object, and does not actually throw an error when the query is invalid
+          // We need to handle that case as well
           this.setState({results: []})
         }
-      })
+      }).catch(){
+        // Catch an actual error being raised. E.g. 5XX, vs a 2XX with an error object
+        this.setState({results: []})
+      }
     }else{
       this.setState({results: []})
     }
