@@ -28,10 +28,9 @@ class BookSearch extends React.Component {
           // We need to handle that case as well
           this.setState({results: []})
         }
-      }).catch(){
-        // Catch an actual error being raised. E.g. 5XX, vs a 2XX with an error object
+      }).catch((e) => {
         this.setState({results: []})
-      }
+      })
     }else{
       this.setState({results: []})
     }
