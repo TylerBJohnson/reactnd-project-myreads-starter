@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Debounce from 'lodash/debounce'
 import * as BooksAPI from './BooksAPI'
 import BooksGrid from './BooksGrid'
 class BookSearch extends React.Component {
@@ -16,7 +17,7 @@ class BookSearch extends React.Component {
     }
   }
 
-  search = () => {
+  search = Debounce(() => {
     if(this.state.query.length > 0){
       BooksAPI.search(this.state.query.trim(), 20).then((results) => {
         if(Array.isArray(results)){
@@ -29,7 +30,7 @@ class BookSearch extends React.Component {
     }else{
       this.setState({results: []})
     }
-  }
+  }, 200)
 
   mergeResultsWithBooks = (results, books) => {
     if(results === undefined || books === undefined){
